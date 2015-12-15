@@ -295,13 +295,13 @@ void CExtract_InfoDlg::OnBnClickedExtractinfo()
 	// TODO: Add your control notification handler code here
 	int width = sourceImg.cols;
 	int height = sourceImg.rows;
-	char temp[8];
-	sprintf_s(temp, "%d", width);
-	std::string show = "width is :  " + width; //+"  ,height is : "+height ;
-	AfxMessageBox(temp);
+	char temp1[8];
+	sprintf_s(temp1, "%d", width);
+	char temp2[8];
+	sprintf_s(temp2,"%d");
+	//AfxMessageBox(temp);
 	/*
-	  int aa = 30;
-	  string s = boost::lexical_cast<string>(aa);
-	  cout<<s<<endl; // 30
+	if (Edit_ID >= IDC_EDIT1 && Edit_ID <= IDC_EDIT9)
+	GetDlgItem(Edit_ID)->SetWindowText(str);
 	*/
 }
