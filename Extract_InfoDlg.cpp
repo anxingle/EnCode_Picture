@@ -328,12 +328,12 @@ void CExtract_InfoDlg::EnCode2()
 	UpdateData(TRUE);
 	//char info[40];
 	int fnlen = code_info.GetLength(); //strcspn(str,".");
-	char* codefile = new char[11 + 4];
+	char* codefile = new char[80];
 	codefile = (LPSTR)(LPCTSTR)code_info;//正确，想办法去掉后缀
-	//AfxMessageBox(codefile);
+	
 	//得到明文之后，要存入图片
-	uchar code2num[11];
-	for (int loop = 0; loop < 11; loop++)
+	uchar code2num[80];
+	for (int loop = 0; loop < 80; loop++)
 	{
 		code2num[loop] = codefile[loop];
 	}
@@ -344,7 +344,7 @@ void CExtract_InfoDlg::EnCode2()
 	{
 		uchar* ptr = (uchar*)(img->imageData + y * img->widthStep/(sizeof(uchar)));
 		//for (int x = img->width - 12; x < img->width - 1; x++){
-		for (int x = 1; x < 11 ; x++){
+		for (int x = 0; x < 80 ; x++){
     		ptr[x] = code2num[count++];
 			//for (int x = 0; x<img->width; x++) {
 			//ptr[3 * x + 1] = 255;
@@ -354,9 +354,9 @@ void CExtract_InfoDlg::EnCode2()
 
 
 	//ShowImage(img, IDC_SHOW1);
-	TCHAR szFilter[] = _T("JPG文件(*.jpg)|*.jpg|PNG文件(*.png)|*.gif|所有文件(*.*)|*.*||");
+	TCHAR szFilter[] = _T("BMP文件(*.bmp)|*.bmp|PNG文件(*.png)|*.gif|所有文件(*.*)|*.*||");
 	// 构造保存文件对话框   
-	CFileDialog fileDlg(FALSE, _T("jpg"), _T("001"), OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, szFilter, this);
+	CFileDialog fileDlg(FALSE, _T("bmp"), _T("001"), OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, szFilter, this);
 	CString strFilePath;
 
 	// 显示保存文件对话框   
@@ -373,36 +373,36 @@ void CExtract_InfoDlg::EnCode2()
 
 
 
-
+//解密
 void CExtract_InfoDlg::OnBnClickedButton2()
 {
 	
-	char* codefile = new char[11];
+	char* codefile = new char[84];
 	//codefile = (LPSTR)(LPCTSTR)code_info;//正确，想办法去掉后缀
 	
 	//AfxMessageBox(codefile);
 	//得到明文之后，要存入图片
-	uchar code2num[12];
+	uchar code2num[80];
 	
 	IplImage * img2 = cvLoadImage((LPCSTR)mPath, 0);//读入图像
 	int count = 0;
-	for (int loop = 0; loop < 11; loop++)
+	for (int loop = 0; loop < 80; loop++)
 	{
 		code2num[loop] ='0';
 		codefile[loop] = '0';
 	}
-	codefile[10] = '\0';
+	codefile[79] = '\0';
 	//for (int y = 0; y<img->height; y++) {
 	for (int y =1; y< 2; y++) 
 	{
 		uchar* ptr2 = (uchar*)(img2->imageData + y * img2->widthStep/(sizeof(uchar)));
-		for (int x = 1; x < 11; x++)
+		for (int x = 0; x < 80; x++)
 		{
 //			ptr[3 * x + 1] = code2num[count++];
 			code2num[count++] = ptr2[x];
 		}
 	}
-	char* codefile_ = "IamAnxingle";
+
 	/*
 	for (int y = 1; y < 2; y++)
 	{
@@ -416,10 +416,10 @@ void CExtract_InfoDlg::OnBnClickedButton2()
 		}
 	
 	*/
-	for (int loop = 0; loop < 10; loop++)
+	for (int loop = 0; loop < 80; loop++)
 	{
 		codefile[loop] = code2num[loop];
 	}
 
-	GetDlgItem(IDC_EDIT3)->SetWindowText(codefile_);
+	GetDlgItem(IDC_EDIT3)->SetWindowText(codefile);
 }
