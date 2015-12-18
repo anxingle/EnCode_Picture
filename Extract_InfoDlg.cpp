@@ -55,8 +55,10 @@ END_MESSAGE_MAP()
 CExtract_InfoDlg::CExtract_InfoDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CExtract_InfoDlg::IDD, pParent)
 	, code_info(_T(""))
+	
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_font.CreatePointFont(330,"楷体");
 }
 
 void CExtract_InfoDlg::DoDataExchange(CDataExchange* pDX)
@@ -73,6 +75,8 @@ BEGIN_MESSAGE_MAP(CExtract_InfoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_ExtractInfo, &CExtract_InfoDlg::OnBnClickedExtractinfo)
 	ON_BN_CLICKED(IDC_BUTTON1, &CExtract_InfoDlg::EnCode2)
 	ON_BN_CLICKED(IDC_BUTTON2, &CExtract_InfoDlg::OnBnClickedButton2)
+	ON_WM_CTLCOLOR()
+//	ON_STN_CLICKED(IDC_Title, &CExtract_InfoDlg::OnStnClickedTitle)
 END_MESSAGE_MAP()
 
 
@@ -259,7 +263,7 @@ void CExtract_InfoDlg::OnBnClickedOpenpic()
 
 	if (dlg.DoModal() != IDOK)             // 判断是否获得图片
 	{
-		AfxMessageBox(_T("请选择合适的文件路径"));
+		AfxMessageBox(_T("看看说明！你不知道要先选择图片吗？"));
 		return;
 	}
 
@@ -337,7 +341,7 @@ void CExtract_InfoDlg::EnCode2()
 	{
 		code2num[loop] = codefile[loop];
 	}
-	IplImage * img = cvLoadImage(mPath, 0);//读入图像
+	IplImage * img = cvLoadImage(mPath, -1);//读入图像
 	int count = 0;
 	//for (int y = 0; y<img->height; y++) {
 	for (int y = 1; y < 2; y++)
@@ -367,7 +371,7 @@ void CExtract_InfoDlg::EnCode2()
 		//SetDlgItemText(IDC_SAVE_EDIT, strFilePath);
 	}
 	cvSaveImage(strFilePath,img);
-
+	AfxMessageBox("加密完成！ copy right@安兴乐");
 	UpdateData(FALSE);
 }
 
@@ -384,7 +388,7 @@ void CExtract_InfoDlg::OnBnClickedButton2()
 	//得到明文之后，要存入图片
 	uchar code2num[80];
 	
-	IplImage * img2 = cvLoadImage((LPCSTR)mPath, 0);//读入图像
+	IplImage * img2 = cvLoadImage((LPCSTR)mPath, -1);//读入图像
 	int count = 0;
 	for (int loop = 0; loop < 80; loop++)
 	{
@@ -423,3 +427,24 @@ void CExtract_InfoDlg::OnBnClickedButton2()
 
 	GetDlgItem(IDC_EDIT3)->SetWindowText(codefile);
 }
+
+
+HBRUSH CExtract_InfoDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// TODO:  Change any attributes of the DC here
+	if (pWnd->GetDlgCtrlID() == IDC_Title)
+	{
+		pDC->SelectObject(&m_font);
+	}
+
+	// TODO:  Return a different brush if the default is not desired
+	return hbr;
+}
+
+
+//void CExtract_InfoDlg::OnStnClickedTitle()
+//{
+//	// TODO: Add your control notification handler code here
+//}
