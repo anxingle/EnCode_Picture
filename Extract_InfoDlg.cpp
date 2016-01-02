@@ -74,7 +74,7 @@ BEGIN_MESSAGE_MAP(CExtract_InfoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_OpenPic, &CExtract_InfoDlg::OnBnClickedOpenpic)
 	ON_BN_CLICKED(IDC_ExtractInfo, &CExtract_InfoDlg::OnBnClickedExtractinfo)
 	ON_BN_CLICKED(IDC_BUTTON1, &CExtract_InfoDlg::EnCode2)
-	ON_BN_CLICKED(IDC_BUTTON2, &CExtract_InfoDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON2, &CExtract_InfoDlg::DeCode)
 	ON_WM_CTLCOLOR()
 //	ON_STN_CLICKED(IDC_Title, &CExtract_InfoDlg::OnStnClickedTitle)
 END_MESSAGE_MAP()
@@ -300,11 +300,10 @@ void CExtract_InfoDlg::OnBnClickedOpenpic()
 //提取图片相关信息
 void CExtract_InfoDlg::OnBnClickedExtractinfo()
 {
-	// TODO: Add your control notification handler code here
-	int width = sourceImg.cols;
-	int height = sourceImg.rows;
-	int channle = (&IplImage(sourceImg))->nChannels;
-	int ori = (&IplImage(sourceImg))->origin;
+	int width = sourceImg.cols;//图片宽度
+	int height = sourceImg.rows;//图片高度
+	int channle = (&IplImage(sourceImg))->nChannels;//图片通道
+	int ori = (&IplImage(sourceImg))->origin;//图片信息起始点
 	char temp1[8];
 	sprintf_s(temp1, "%d", width);
 	char temp2[8];
@@ -355,8 +354,6 @@ void CExtract_InfoDlg::EnCode2()
 			//ptr[3 * x + 2] = 255;
 		}
 	}
-
-
 	//ShowImage(img, IDC_SHOW1);
 	TCHAR szFilter[] = _T("BMP文件(*.bmp)|*.bmp|PNG文件(*.png)|*.gif|所有文件(*.*)|*.*||");
 	// 构造保存文件对话框   
@@ -378,7 +375,7 @@ void CExtract_InfoDlg::EnCode2()
 
 
 //解密
-void CExtract_InfoDlg::OnBnClickedButton2()
+void CExtract_InfoDlg::DeCode()
 {
 	
 	char* codefile = new char[84];

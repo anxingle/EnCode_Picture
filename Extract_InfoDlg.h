@@ -42,7 +42,7 @@ public:
 	afx_msg void OnBnClickedExtractinfo();
 	afx_msg void EnCode2();
 	CString code_info;
-	afx_msg void OnBnClickedButton2();
+	afx_msg void DeCode();
 	CFont m_font;
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 //	afx_msg void OnStnClickedTitle();
