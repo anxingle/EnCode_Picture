@@ -4,7 +4,9 @@
 
 
 
-<img src="http://chart.googleapis.com/chart?cht=tx&chl= \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;">
+<img src="http://www.ituring.com.cn/">
 
 
-<img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;">
+<img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large%20x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;">
+
+
