@@ -8,5 +8,5 @@
 
 
 
-<img src="http://www.forkosh.com/mathtex.cgi?c=\\sqrt{a^2+b^2}"
+<img src="http://www.forkosh.com/mathtex.cgi?c=\sqrt{a^2+b^2}"
    alt="" border=0 align=middle>
