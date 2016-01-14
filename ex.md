@@ -10,6 +10,6 @@
 
 
 <br>33<br>
-<img src="http://www.forkosh.com/mathtex.cgi? %5Csum_j w_j x_j >%5cmbox{threshold}">
+<img src="http://www.forkosh.com/mathtex.cgi? %5Csum_j w_j x_j %3E %5cmbox{threshold}">
 
 
