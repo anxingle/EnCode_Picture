@@ -3,7 +3,7 @@
 
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large%20x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;">
 
-<img src="http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}" style="border:none;">
+<img src="http://chart.googleapis.com/chart?cht=tx&chl=%5CLarge%20x=%5Cfrac{-b%5Cpm%5Csqrt{b^2-4ac}}{2a}" style="border:none;">
 
 
 
