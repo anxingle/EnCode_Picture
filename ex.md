@@ -5,7 +5,7 @@
 
 
 <br>4<br>
-<img src="http://www.forkosh.com/mathtex.cgi?c>%5Csqrt{a^2+b^2}" alt="" border=0 align=middle>
+<img src="http://www.forkosh.com/mathtex.cgi?c=%5Csqrt{a^2+b^2}" alt="" border=0 align=middle>
 
 
 
